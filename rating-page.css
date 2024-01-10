@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .rating {
+    text-align: center;
+  }
+  
+  .emoji-container {
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .emoji {
+    font-size: 2em;
+    cursor: pointer;
+    padding: 0 10px;
+  }
+  
+  .emoji:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* أضف قواعد CSS لتنسيق العناصر هنا */
+
+/* تنسيق العناصر الرئيسية */
+.container {
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #333333;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* تنسيق نتيجة BMI */
+#resultBox {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.alert-info {
+    background-color:aqua;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+/* تنسيق الحقول والزر في أدوات الاختيار للألوان */
+form p {
+    margin-bottom: 10px;
+}
+
+input[type="email"],
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+input[type="submit"] {
+    width: auto;
+    padding: 8px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* تحديد ألوان الخلفية */
+body {
+    transition: background-color 0.5s ease;
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        #resultBox {
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body style="background-color:darkgray;">
+
+    <div class="container">
+        <h2 class="mt-3">BMI Calculator</h2>
+
+        <div class="form-group">
+            <label for="height">Height (in meters):</label>
+            <input type="text" class="form-control" id="height" placeholder="Enter height">
+        </div>
+
+        <div class="form-group">
+            <label for="weight">Weight (in kilograms):</label>
+            <input type="text" class="form-control" id="weight" placeholder="Enter weight">
+        </div>
+
+        <fieldset class="form-group">
+            <legend>Gender:</legend>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="gender" value="Male" id="maleCheckbox">
+                <label class="form-check-label" for="maleCheckbox">Male</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="gender" value="Female" id="femaleCheckbox">
+                <label class="form-check-label" for="femaleCheckbox">Female</label>
+            </div>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="lifestyle">Lifestyle:</label>
+            <select class="form-control" id="lifestyle">
+                <option value="Active">Active</option>
+                <option value="Sedentary">Sedentary</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+
+        <div id="resultBox" class="mt-4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function calculateBMI() {
+            var height = parseFloat(document.getElementById("height").value) || 0;
+            var weight = parseFloat(document.getElementById("weight").value) || 0;
+            var genderCheckboxes = document.getElementsByName("gender");
+            var lifestyle = document.getElementById("lifestyle").value;
+
+            if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                alert("Please enter valid height and weight!");
+                return;
+            }
+
+            var selectedGenders = [];
+            for (var i = 0; i < genderCheckboxes.length; i++) {
+                if (genderCheckboxes[i].checked) {
+                    selectedGenders.push(genderCheckboxes[i].value);
+                }
+            }
+
+            if (selectedGenders.length === 0) {
+                alert("Please select at least one gender!");
+                return;
+            }
+
+            var bmi = weight / Math.pow(height, 2);
+            var bmiCategory;
+
+            if (bmi < 18.5) {
+                bmiCategory = "Underweight";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiCategory = "Normal weight";
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiCategory = "Overweight";
+            } else {
+                bmiCategory = "Obesity";
+            }
+
+            var recommendedWeight = (lifestyle === "Active") ? 22 * Math.pow(height, 2) : 24 * Math.pow(height, 2);
+
+            document.getElementById("resultBox").innerHTML = "<div class='alert alert-info' role='alert'>Your BMI is " +
+                bmi.toFixed(2) + " (" + bmiCategory + ").<br>Recommended weight for an active lifestyle is " +
+                recommendedWeight.toFixed(2) + " kg.</div>";
+        }
+    </script>
+
+    <script>
+        let myVar = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            const d = new Date();
+            document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+        }
+
+        function validate() {
+            var email1 = document.getElementById('email1').value;
+            var email2 = document.getElementById('email2').value;
+            if (email1 != email2) {
+                document.getElementById('msg').innerHTML = "Email address not matched";
+                return false;
+            } else {
+                document.getElementById('msg').innerHTML = "";
+                return true;
+            }
+        }
+
+        function changecolor() {
+            var e = document.getElementById("select1");
+            var selectedColor = e.options[e.selectedIndex].text.toLowerCase();
+            document.body.style.backgroundColor = selectedColor;
+        }
+    </script>
+
+    <p>Set Time Interval</p>
+    <p id="clock"></p>
+
+    <form onsubmit="return validate()">
+        <p>Email: <input type="email" id="email1"></p>
+        <p>Confirm Email: <input type="email" id="email2"></p>
+        <p id="msg"></p>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+
+    <form>
+        <h1>Select a Color </h1>
+        <select id="select1" onChange="changecolor()">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Orange</option>
+        </select>
+    </form>
+
+</body>
+
+</html>

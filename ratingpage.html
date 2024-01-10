@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تقييم بالإيموجي</title>
+  <link rel="stylesheet" href="rating-page.css">
+</head>
+<body style="background-image: -webkit-image-set('rating-wallpaper.webp') ;"wadth="2000px"haidth="2000px">
+  <div class="rating">
+    <h1 style="color: white;">:قم بتقييم خدمتنا</h1>
+    <div class="emoji-container" style="background-color:lightblue;">
+      <span class="emoji" id="emoji1" onclick="setRating(1)">😡</span>
+      <span class="emoji" id="emoji2" onclick="setRating(2)">😐</span>
+      <span class="emoji" id="emoji3" onclick="setRating(3)">😊</span>
+      <span class="emoji" id="emoji4" onclick="setRating(4)">😍</span>
+    </div>
+    <p id="selectedEmoji">لا يوجد تقييم</p>
+  </div>
+
+  <script>
+    function setRating(rating) {
+      const selectedEmoji = document.getElementById('selectedEmoji');
+      selectedEmoji.textContent = `تقييمك: ${rating} نجوم`;
+    }
+  </script>
+</body>
+</html>

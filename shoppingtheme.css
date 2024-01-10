@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+.corner-image {
+    position:absolute;
+    top: 5px; /* المسافة من الحافة العلوية */
+    right: 10px; /* المسافة من الحافة اليمنى */
+    width: 120px; /* عرض الصورة */
+    height: 120px; /* ارتفاع الصورة */
+    background-image: url('asubackground.jpg'); /* مسار الصورة */
+    background-size: cover; /* حجم الصورة */
+    background-position: center; /* وضعية الصورة */
+    border-radius: 50%; /* تدوير الصورة بشكل دائري */
+    border: 2px solid black; /* حدود للصورة */
+    box-shadow: 0 0 5px rgba(163, 16, 16, 0.3); 
+    
+}
+
+h1 {
+    color: #333;
+}
+
+.cart {
+    width: 60%;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.cart-item p {
+    margin: 5px;
+}
+
+.remove-button {
+    padding: 5px 10px;
+    background-color: #ff3333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+

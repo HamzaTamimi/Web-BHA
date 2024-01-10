@@ -1,0 +1,76 @@
+ .corner-image {
+            position: absolute;
+            top: 5px; /* المسافة من الحافة العلوية */
+            right: 10px; /* المسافة من الحافة اليمنى */
+            width: 120px; /* عرض الصورة */
+            height: 120px; /* ارتفاع الصورة */
+            background-image: url('asubackground.jpg'); /* مسار الصورة */
+            background-size: cover; /* حجم الصورة */
+            background-position: center; /* وضعية الصورة */
+            border-radius: 50%; /* تدوير الصورة بشكل دائري */
+            border: 2px solid black; /* حدود للصورة */
+            box-shadow: 0 0 5px rgba(163, 16, 16, 0.3); 
+            
+        }
+        .cornerr-image {
+            
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            width: 50px;
+            height: 50px;
+            background-image: url('shoppingcart.png');
+    
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 2px solid gold;
+            box-shadow: 0 0 5px rgba(163, 16, 16, 0.3);
+            z-index: 9999; /* Ensure it's above other elements */
+        }
+        .c1:hover{
+            color:gray;
+            font-size: 60px;
+            border: black double 10px;
+        }
+        body {
+          
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
